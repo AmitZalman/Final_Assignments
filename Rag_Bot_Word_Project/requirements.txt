@@ -1,0 +1,22 @@
+# Web UI
+gradio>=4.0.0
+
+# PDF loading
+pypdf>=4.0.0
+
+# LangChain components
+langchain-community>=0.2.0
+langchain-text-splitters>=0.2.0
+langchain-chroma>=0.1.0
+langchain-openai>=0.1.0
+langchain>=0.2.0
+
+
+# Vector store backend
+chromadb>=0.5.0
+
+# Environment variable loader
+python-dotenv>=1.0.0
+
+# Word loading
+docx2txt>=0.8
