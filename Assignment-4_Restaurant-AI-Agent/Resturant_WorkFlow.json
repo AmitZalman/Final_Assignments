@@ -1,0 +1,194 @@
+{
+  "name": "Resturant_WorkFlow",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "restaurant",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "aef7f113-5cb5-46f8-996c-37ec7af21638",
+      "name": "Webhook",
+      "webhookId": "7c6514dd-3c48-4b52-97eb-4db9f26cbd17"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "24ded1c8-f69c-4e8a-a57c-30a7e5cfe262",
+              "leftValue": "={{ $json.body.event }}",
+              "rightValue": "reservation",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        208,
+        0
+      ],
+      "id": "c7c0c543-2a66-4502-a814-f4dc2257def2",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "fromEmail": "amitza333@gmail.com",
+        "toEmail": "={{ $json.body.contact }}",
+        "subject": "Reservation Confirmed - Sakura Asian Kitchen",
+        "html": "=<div style=\"font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #e0e0e0; border-radius: 10px; overflow: hidden;\">\n    <div style=\"background-color: #D32F2F; color: white; padding: 20px; text-align: center;\">\n        <h1 style=\"margin: 0;\">Sakura Asian Kitchen 🌸</h1>\n    </div>\n    <div style=\"padding: 20px; background-color: #f9f9f9;\">\n        <h2 style=\"color: #333;\">Hi {{$json.body.customer_name}},</h2>\n        <p style=\"font-size: 16px; color: #555;\">Your table is ready for you! Here are your reservation details:</p>\n        \n        <div style=\"background-color: white; padding: 15px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); margin-bottom: 20px;\">\n            <p style=\"margin: 5px 0;\">📅 <strong>Date:</strong> {{$json.body.date}}</p>\n            <p style=\"margin: 5px 0;\">⏰ <strong>Time:</strong> {{$json.body.time}}</p>\n            <p style=\"margin: 5px 0;\">👥 <strong>Party Size:</strong> {{$json.body.party_size}} people</p>\n            <p style=\"margin: 5px 0;\">🔖 <strong>Booking ID:</strong> #{{$json.body.id}}</p>\n            <p style=\"margin: 5px 0;\">📧 <strong>Contact:</strong> {{$json.body.contact}}</p>\n        </div>\n        \n        <p style=\"font-size: 16px; color: #555;\">We look forward to hosting you for an unforgettable dining experience.</p>\n    </div>\n    <div style=\"background-color: #333; color: white; text-align: center; padding: 10px; font-size: 12px;\">\n        © 2026 Sakura Asian Kitchen | 88 Lotus Avenue, Central District\n    </div>\n</div>",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        592,
+        -144
+      ],
+      "id": "bfb9cbe2-485b-4f7d-ab99-f21e642e907d",
+      "name": "Send an Email",
+      "webhookId": "6b6cba08-4105-4a4a-b9d7-a68451ac56e3",
+      "credentials": {
+        "smtp": {
+          "id": "9h3TuVqJh6VjRVWD",
+          "name": "SMTP account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fromEmail": "amitza333@gmail.com",
+        "toEmail": "amitza333@gmail.com",
+        "subject": "Reservation Confirmed - Sakura Asian Kitchen",
+        "html": "=<div style=\"font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #e0e0e0; border-radius: 10px; overflow: hidden;\">\n    <div style=\"background-color: #757575; color: white; padding: 20px; text-align: center;\">\n        <h1 style=\"margin: 0;\">Sakura Asian Kitchen 🌸</h1>\n    </div>\n    <div style=\"padding: 20px; background-color: #f9f9f9;\">\n        <h2 style=\"color: #333;\">Notice of Cancellation</h2>\n        <p style=\"font-size: 16px; color: #555;\">Hello,</p>\n        <p style=\"font-size: 16px; color: #555;\">As requested, your reservation has been successfully cancelled.</p>\n        \n        <div style=\"background-color: white; padding: 15px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); border-left: 4px solid #D32F2F; margin-bottom: 20px;\">\n            <p style=\"margin: 5px 0;\">🔖 <strong>Booking ID Cancelled:</strong> #{{$json.body.id}}</p>\n        </div>\n        \n        <p style=\"font-size: 16px; color: #555;\">We hope to have the opportunity to serve you another time!</p>\n    </div>\n    <div style=\"background-color: #333; color: white; text-align: center; padding: 10px; font-size: 12px;\">\n        © 2026 Sakura Asian Kitchen | 88 Lotus Avenue, Central District\n    </div>\n</div>",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        416,
+        96
+      ],
+      "id": "c5eca7ff-7076-4c3c-97e4-40883df80132",
+      "name": "Send an Email1",
+      "webhookId": "6b6cba08-4105-4a4a-b9d7-a68451ac56e3",
+      "credentials": {
+        "smtp": {
+          "id": "9h3TuVqJh6VjRVWD",
+          "name": "SMTP account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "0fa1937b-168c-49d3-b3d8-a3530085851e",
+              "leftValue": "={{ $json.body.contact }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        384,
+        -96
+      ],
+      "id": "46455f64-7480-43ff-88bb-ba0cfb0ff601",
+      "name": "If1"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send an Email1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "Send an Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "67fa69fd-47dc-4e1b-b3e4-0e692ca6237d",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "117394455f59867b072d836f5c45272312b2044febb0548e74ddb91bbe543c7c"
+  },
+  "nodeGroups": [],
+  "id": "cHKe0K91VD6FxBEb",
+  "tags": []
+}
