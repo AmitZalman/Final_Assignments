@@ -1,0 +1,13 @@
+# Loads environment variables from a .env file (e.g., OPENAI_API_KEY, LLM_MODEL)
+python-dotenv
+
+# Gradio for the web-based graphical user interface
+gradio
+
+# Core LangChain abstractions and routing components
+langchain-core
+
+# Official LangChain integration for OpenAI chat models
+langchain-openai
+
+requests
