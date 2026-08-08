@@ -31,6 +31,18 @@ The app extracts text from the document, splits it into searchable chunks, creat
 
 ---
 
+## 📸 Live Demo
+
+The app in action — answering questions about the included sample document with exact, grounded answers and source citations:
+
+<div align="center">
+
+<img src="./assets/demo_screenshot.png" alt="Chat with Your Word Document — live demo" width="850"/>
+
+</div>
+
+---
+
 ## 🖼️ Demo Flow
 
 ```mermaid
@@ -85,10 +97,13 @@ flowchart LR
 
 ```text
 .
-├── rag_word_bot.py      # Main Gradio + LangChain application
-├── requirements.txt     # Python dependencies
-├── .env                 # Local API key file - do not commit
-└── README.md            # Project documentation
+├── rag_word_bot.py                 # Main Gradio + LangChain application
+├── requirements.txt                # Python dependencies
+├── Nimbus_Company_Handbook.docx    # Sample document for testing
+├── assets/
+│   └── demo_screenshot.png         # Live demo screenshot
+├── .env                            # Local API key file - do not commit
+└── README.md                       # Project documentation
 ```
 
 ---
@@ -189,27 +204,29 @@ Open that URL in your browser, upload a `.docx` file, and start asking questions
 
 ## 🧪 Example Questions
 
-Try asking:
+The repository includes a sample document — **`Nimbus_Company_Handbook.docx`**, an employee handbook for a fictional robotics company — so you can test the bot immediately. Upload it and try:
 
 ```text
-What is this document about?
+Who founded the company and when?
 ```
 
 ```text
-Summarize the main points.
+How much does the SkyPorter X2 cost?
 ```
 
 ```text
-What specific evidence, data, or examples support the main claims?
+How many vacation days do employees get?
 ```
 
 ```text
-Can you identify major risks, limitations, or challenges discussed in the document?
+Who should I email about IT problems?
 ```
 
 ```text
-Extract 3 obscure but interesting facts from deep inside the document.
+What is the name of the office dog?
 ```
+
+Also try a question the document **cannot** answer (e.g. *"What is the CEO's salary?"*) — the bot correctly replies "I don't know" instead of inventing an answer. These questions are also built into the UI as one-click examples.
 
 ---
 

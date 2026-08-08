@@ -178,11 +178,11 @@ with gr.Blocks(title="Chat with Your Word Document") as demo:
 
     gr.Examples(
         examples=[
-            ["What specific evidence, data, or examples are used to support the main claims?"],
-            ["Can you identify any major challenges, limitations, or risks discussed in the text?"],
-            ["Based on the document, what are the future implications or final recommendations?"],
-            ["How do the different sections of this document connect to form the overall conclusion?"],
-            ["Extract 3 obscure but interesting facts mentioned deep in the document."]],
+            ["Who founded the company and when?"],
+            ["How much does the SkyPorter X2 cost?"],
+            ["How many vacation days do employees get?"],
+            ["Who should I email about IT problems?"],
+            ["What is the name of the office dog?"]],
         inputs=question_input
     )
 
