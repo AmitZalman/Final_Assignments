@@ -25,6 +25,24 @@ Unlike traditional keyword search, this project can match concepts even when the
 
 ---
 
+## 📸 Live Demo Output
+
+Running the script shows 5 semantic queries against a 15-car database, each returning the top 2 most similar results with distance scores:
+
+<div align="center">
+
+<img src="./assets/demo_output.png" alt="Vector Database Semantic Search — 5 real queries showing embeddings and semantic matching" width="900"/>
+
+</div>
+
+**Key observations from the live run:**
+- ✅ **"vehicles perfect for large families going on a trip"** → Honda Minivan (distance: 0.3934) — **best match**
+- ✅ **"carrying heavy construction materials"** → Ford Truck (distance: 0.4874) — **excellent match**
+- ✅ **"going fast on a racetrack with a loud exhaust"** → Ferrari (distance: 0.6245) — **good semantic match despite different words**
+- 📊 Distance threshold of **0.70** recommended to filter noise while keeping relevant semantic matches
+
+---
+
 ## 🎯 Main Goal
 
 The goal of this mini-project is to understand the basic workflow behind modern semantic search systems:
